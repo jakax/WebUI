@@ -1,5 +1,20 @@
-@media (max-width: 900px) {
-	.parrafo {
-	display: none;
+@media (min-width: 900px) {
+	body {
+		display: none;
+		background-color: white;
+        background-image: url('errorpage.png');
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: left top;
 	}
+}
+html, body {
+	height: 100%;
+}
+body {
+	background-color: #00001a;
+}
+}
+h1 {
+	color: red;
 }
