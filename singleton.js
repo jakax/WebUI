@@ -1,7 +1,6 @@
 /**
 *Singleton Pattern which generate a unique connection
 **/
-
 var namespace = {
     _singleton: null,
     get singleton() {
@@ -19,7 +18,6 @@ var namespace = {
 /**
 *Indicate the state of the player through buttons with State Pattern
 **/
-
 var player = {  
     state: undefined,
     states: {
@@ -107,6 +105,9 @@ var player = {
 
 player.initialize();
 
+/**
+* Count that jump 3 places if the condition is OK with iterator pattern
+**/
 var iterator = (function() {
 
     var index = 0,
@@ -145,3 +146,48 @@ var iterate = (function(){
     iterator.rewind();  
     console.log(iterator.current());
 });
+
+/**
+*
+**/
+var Movement = function(func) {  
+    this.move = func;
+};
+
+Movement.prototype.execute = function() {  
+    this.move();
+};
+
+var running = new Movement(function() {  
+    console.log("Hey I'm running!");
+});
+
+var walking = new Movement(function() {  
+    console.log("Just walking along...");
+});
+
+function changeMovementType(movement) {  
+    this.movement = movement;
+}
+
+function move() {  
+    this.movement.execute();
+}
+var running = new Movement(function() {  
+    console.log("Hey I'm running!");
+});
+
+var walking = new Movement(function() {  
+    console.log("Just walking along...");
+});
+
+
+
+var hero = new Character();  
+// hero.changeMovementType(walking);  
+// hero.move();
+
+// ... OH NO MOTHERFUCKIN' DINOSAURS!!!
+
+// hero.changeMovementType(running);  
+// hero.move(); 
