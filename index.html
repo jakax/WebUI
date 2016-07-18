@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>prueba de Media Query</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>prueba de Media Query</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="singleton.js"></script>
+
 </head>
 <body>
-
+<button onclick="namespace.singleton.amethod()">Connect</button>
+<p id="state"></p>
+<button onclick="player.stop()" class="floated">Stop!</button>
+<button onclick="player.play()" class="floated">Play!</button>
+<button onclick="player.pause()" class="floated">Pause!</button>
+<p id="action"></p>
 </body>
 </html>
