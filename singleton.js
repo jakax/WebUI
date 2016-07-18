@@ -1,3 +1,7 @@
+/**
+*Singleton Pattern which generate a unique connection
+**/
+
 var namespace = {
     _singleton: null,
     get singleton() {
@@ -5,13 +9,16 @@ var namespace = {
 	        this._singleton = {
 	            amethod: function() {
                 document.getElementById("state").innerHTML = "Connected"
-	            console.log("amethod");
 	            }
 	        }
         }
     return this._singleton;
     }
 };
+
+/**
+*Indicate the state of the player through buttons with State Pattern
+**/
 
 var player = {  
     state: undefined,
@@ -99,3 +106,42 @@ var player = {
 };
 
 player.initialize();
+
+var iterator = (function() {
+
+    var index = 0,
+        data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        length = data.length;
+
+    return {
+        next: function() {
+            var element;
+            if (!this.hasNext()) {
+                return null;
+            }
+            element = data[index];
+            index += 3;
+            return element;
+        },
+        hasNext: function() {
+            return index < length;
+        },
+        rewind: function() {
+            index = 0;
+            return data[index];
+        },
+        current: function() {
+            return data[index];
+        }
+    }
+
+}());
+
+var iterate = (function(){
+	while(iterator.hasNext()) {  
+        console.log(iterator.next());
+    }
+
+    iterator.rewind();  
+    console.log(iterator.current());
+});

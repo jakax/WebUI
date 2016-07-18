@@ -1,4 +1,4 @@
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
     body {
         display: none;
         background-color: #FFFFFF;
@@ -18,7 +18,10 @@ p {
     color: #FFFFFF;
     display: block;
 }
-.floated {
+button {
+	position: left;
+}
+div .floated{
 	float: left;
 	margin-right: 100px;
 }
