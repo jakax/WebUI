@@ -148,46 +148,35 @@ var iterate = (function(){
 });
 
 /**
-*
+* Greeter is a class of object that can greet people.
+* It can learn different ways of greeting people through
+* 'Strategies.'
 **/
-var Movement = function(func) {  
-    this.move = func;
+var Greeter = function(strategy) {
+  this.strategy = strategy;  
 };
-
-Movement.prototype.execute = function() {  
-    this.move();
+ 
+Greeter.prototype.greet = function() {
+  return this.strategy();
 };
-
-var running = new Movement(function() {  
-    console.log("Hey I'm running!");
-});
-
-var walking = new Movement(function() {  
-    console.log("Just walking along...");
-});
-
-function changeMovementType(movement) {  
-    this.movement = movement;
-}
-
-function move() {  
-    this.movement.execute();
-}
-var running = new Movement(function() {  
-    console.log("Hey I'm running!");
-});
-
-var walking = new Movement(function() {  
-    console.log("Just walking along...");
-});
-
-
-
-var hero = new Character();  
-// hero.changeMovementType(walking);  
-// hero.move();
-
-// ... OH NO MOTHERFUCKIN' DINOSAURS!!!
-
-// hero.changeMovementType(running);  
-// hero.move(); 
+ 
+var politeGreetingStrategy = function() {
+ console.log("Hello."); 
+};
+ 
+var friendlyGreetingStrategy = function() {
+  console.log("Hey!");
+};
+ 
+var boredGreetingStrategy = function() {
+  console.log("sup.");
+};
+ 
+// use these strategies!
+var politeGreeter   = new Greeter(politeGreetingStrategy);
+var friendlyGreeter = new Greeter(friendlyGreetingStrategy);
+var boredGreeter    = new Greeter(boredGreetingStrategy);
+ 
+politeGreeter.greet();
+friendlyGreeter.greet();
+boredGreeter.greet();

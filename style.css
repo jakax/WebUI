@@ -19,7 +19,9 @@ p {
     display: block;
 }
 button {
+    margin-bottom: 20px;
 	position: left;
+
 }
 div .floated{
 	float: left;
