@@ -76,47 +76,42 @@ function searchNode() {
     if(value === 0) {
         value = parseInt(document.getElementById("nodo").value);
     } 
-    // if (corte === 1) {
-    //     esIgual();
-    //}
-    if (value === nodoAct.value && arr[0] !== nodoAct.value) {
-        corte = 0;
-        return arr.push(nodoAct.value);
-    }        
-    // if (corte === 1) {
-    //     esMayor();
-    //     searchNode();
-    // }
-    if (value > nodoAct.value && nodoAct.right !== null) {
-        arr.push(nodoAct.value);
-        nodoAct = nodoAct.right;
-        return nodoAct;
-        searchNode();
+    if (corte === 1) {
+        esIgual();
     }    
-    // if (corte === 1) {
-    //     arr = esMenor();
-    //     searchNode();
-    // }
-    if (value < nodoAct.value && nodoAct.left !== null) {
-        arr.push(nodoAct.value);
-        nodoAct = nodoAct.left;
-        return nodoAct;
+    if (corte === 1) {
+        esMayor();
         searchNode();
-    }    
+    }
+    if (corte === 1) {
+        arr = esMenor();
+        searchNode();
+    }
 
     console.log(arr);
 }
 
 function esIgual() {
-
+    if (value === nodoAct.value && arr[0] !== nodoAct.value) {
+        corte = 0;
+        return arr.push(nodoAct.value);
+    }
 }
 
 function esMayor() {
-
+    if (value > nodoAct.value && nodoAct.right !== null) {
+        arr.push(nodoAct.value);
+        nodoAct = nodoAct.right;
+        return nodoAct;
+    }
 }
 
 function esMenor() {
-
+    if (value < nodoAct.value && nodoAct.left !== null) {
+        arr.push(nodoAct.value);
+        nodoAct = nodoAct.left;
+        return nodoAct;
+    }
 }
 
 
