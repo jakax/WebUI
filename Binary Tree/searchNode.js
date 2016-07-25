@@ -10,16 +10,14 @@ function BinarySearchTree(){
 
 var nodesArray = [],
     arr = [],
-    arrFinal = [],
     nodoAct = 0,
-    index = 1,
-    corte = 1,
-    value = 0;
+    value = 0,
+    valuePrev = 0;
 
 
  /*
   * Generate unbalanced binary search tree
-  */
+ */
 BinarySearchTree.prototype.push = function(val){
     var root = this.root;
 
@@ -43,7 +41,7 @@ BinarySearchTree.prototype.push = function(val){
         }
         else{
             if(!currentNode.right){
-            currentNode.right = newNode;
+                currentNode.right = newNode;
                 break;
             }
             else{
@@ -57,7 +55,9 @@ BinarySearchTree.prototype.push = function(val){
     
 }
 
-
+ /*
+ * Ordered values to generate a balanced tree
+ */
 var bst = new BinarySearchTree();
 bst.push(40);
 bst.push(20);
@@ -66,61 +66,28 @@ bst.push(30);
 bst.push(60);
 bst.push(50);
 bst.push(70);
-console.log(nodesArray);
-
-//arr.push(nodesArray[0].value);
-nodoAct = nodesArray[0];
-//console.log(arr);
-
-function searchNode() {
-    if(value === 0) {
-        value = parseInt(document.getElementById("nodo").value);
-    } 
-    if (corte === 1) {
-        esIgual();
-    }    
-    if (corte === 1) {
-        esMayor();
-        searchNode();
-    }
-    if (corte === 1) {
-        arr = esMenor();
-        searchNode();
-    }
-
-    console.log(arr);
-}
-
-function esIgual() {
-    if (value === nodoAct.value && arr[0] !== nodoAct.value) {
-        corte = 0;
-        return arr.push(nodoAct.value);
-    }
-}
-
-function esMayor() {
-    if (value > nodoAct.value && nodoAct.right !== null) {
-        arr.push(nodoAct.value);
-        nodoAct = nodoAct.right;
-        return nodoAct;
-    }
-}
-
-function esMenor() {
-    if (value < nodoAct.value && nodoAct.left !== null) {
-        arr.push(nodoAct.value);
-        nodoAct = nodoAct.left;
-        return nodoAct;
-    }
-}
-
 
 
  /*
-  * Take value from input field and run binary tree generator  
-  */
-// function loadNode() {
-//     var nodo;
-//     nod = document.getElementById("nodo").value;
-//     bst.push(nod);
-// }
+ * Give the path of a node entered by the user
+ */
+function searchNode() {
+    valuePrev = value;
+    value = parseInt(document.getElementById("nodo").value);
+    if (value !== valuePrev) {
+        arr = [];
+        nodoAct = nodesArray[0];
+    }
+    if (value > nodoAct.value && nodoAct.right !== null) {
+        arr.push(nodoAct.value);
+        nodoAct = nodoAct.right;
+        searchNode();
+    } else if (value < nodoAct.value && nodoAct.left !== null) {
+        arr.push(nodoAct.value);
+        nodoAct = nodoAct.left;
+        searchNode();
+    } else {
+        arr.push(nodoAct.value);
+        document.getElementById("path").innerHTML = "Node Path: " + arr;
+    }
+}
